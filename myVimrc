@@ -71,8 +71,10 @@ let g:indentLine_color_term = 239
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " w0ng/vim-hybrid
-set background=dark
-colorscheme hybrid
+if !empty(glob("~/.vim/plugged/vim-hybrid"))
+    set background=dark
+    colorscheme hybrid
+endif
 
 " ctrlpvim/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
