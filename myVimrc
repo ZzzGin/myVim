@@ -1,0 +1,99 @@
+" ============== Static settings ==============
+set nocompatible              " be iMproved, required
+filetype on
+syntax on
+let mapleader=','
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set smartindent
+
+
+" ============== Display settings ==============
+" settings for line number showing
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" highlight search
+set hlsearch
+
+
+" ============== Mapping settings ==============
+" jk to esc in insert mode 
+inoremap jk <Esc>
+" space+space to select current word
+noremap <space> viw
+
+" leader+w to save file in insert mode
+inoremap <leader>w <Esc>:w<cr>
+" leader+l to toggle the line number in normal mode 
+noremap <leader>l <Esc>:set nu! rnu!<cr> 
+
+
+" ============== Plugin settings ==============
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'w0ng/vim-hybrid'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+" scrooloose/nerdtree
+nnoremap <leader>n : NERDTreeToggle<CR>
+" find the file in the navi bar
+nnoremap <leader>v : NERDTreeFind<CR>
+" if the only window is nertree, close vim
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" after selecting a file, use 's' to open a vertical split for this file, 'i'
+" to open a hori-split for this file
+
+" vim-airline/vim-airline
+let g:airline_theme='term'
+
+" Yggdroot/indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" w0ng/vim-hybrid
+set background=dark
+colorscheme hybrid
+
+" ctrlpvim/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+" fuzzy search the filename, use ctrl-v to open a file in a new vertical split
+
+" easymotion/vim-easymotion
+nmap ss <Plug>(easymotion-s2)
+
+" tpope/vim-surround
+" "Helloworld" -> 'Helloworld' : cs"'
+" <q>Helloworld</q> -> 'Helloworld' : cst'
+" 'Helloworld' -> Helloworld : ds'
+" Helloworld -> 'Helloworld' : ys iw '
+
+" Shuogo/deoplete.nvim
+" let g:deoplete#enable_at_startup = 1
+" set completeopt-=preview
+" ctrl+x,o to trigger this plugin
+" ctrl+n to select
+
+" tpope/vim-commentary
+" gc to comment the selected lines in visual mode
+" gcgc to uncomment a block
+" gcc to comment a line
