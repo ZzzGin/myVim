@@ -2,6 +2,7 @@
 my Vim settings
 ### Updated July 20 2019
 ./initMyVim.sh: re-install the vim settings
+
 ./solidifyMyVIm.sh: save the current vim settings to this repo
 #### Plugins list:
 - 'scrooloose/nerdtree'
