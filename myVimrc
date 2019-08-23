@@ -8,6 +8,7 @@ set expandtab
 set shiftwidth=4
 set smartindent
 set colorcolumn=80
+set backspace=2
 
 
 " ============== Display settings ==============
